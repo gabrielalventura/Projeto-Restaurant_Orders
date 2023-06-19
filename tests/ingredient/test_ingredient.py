@@ -17,3 +17,6 @@ def test_ingredient():
 
     assert ingredient1 != ingredient2
     # return repr(self) == repr(other)
+
+    assert hash(ingredient1) == hash("camarão")
+    # return hash(self.name)
