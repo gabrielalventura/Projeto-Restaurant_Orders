@@ -1,4 +1,4 @@
-from models.ingredient import Ingredient
+from models.ingredient import Ingredient, Restriction
 from src.models.dish import Dish  # noqa: F401, E261, E501
 
 
@@ -30,3 +30,4 @@ def test_dish():
         ingredient1: 100
     }
     assert dish1.get_restrictions == ingredient_restriction1
+    assert dish1.get_ingredients == {ingredient1}
