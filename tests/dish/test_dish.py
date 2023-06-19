@@ -6,7 +6,6 @@ from src.models.dish import Dish  # noqa: F401, E261, E501
 def test_dish():
     dish1 = Dish("Macarrão com camarão", 32.00)
     dish2 = Dish("Omelete de queijo", 18.00)
-    dish3 = Dish("Ceviche", -50)
     ingredient1 = Ingredient("camarão")
     ingredient_restriction1 = {
             Restriction.ANIMAL_MEAT,
@@ -25,21 +24,21 @@ def test_dish():
     assert dish2 == Dish("Omelete de queijo", 18.00)
     # return self.__repr__() == other.__repr__()
 
-    assert hash(dish1) == "Dish('Macarrão com camarão', R$32.00)"
+    assert hash(dish1) == hash("Dish('Macarrão com camarão', R$32.00)")
     # return hash(self.__repr__())
-
-    with pytest.raises(
-        TypeError, match="Dish price must be float."
-         ):  # formatação exigida pelo lint
-        dish3
-
-    with pytest.raises(
-        ValueError, match="Dish price must be greater then zero"
-         ):  # formatação exigida pelo lint
-        dish3
 
     assert dish1.recipe == {
         ingredient1: 100
     }
     assert dish1.get_restrictions == ingredient_restriction1
     assert dish1.get_ingredients == {ingredient1}
+
+    with pytest.raises(
+        TypeError, match="Dish price must be float."
+         ):  # formatação exigida pelo lint
+        Dish("Ceviche", -50)
+
+    with pytest.raises(
+        ValueError, match="Dish price must be greater then zero"
+         ):  # formatação exigida pelo lint
+        Dish("Ceviche", -50)
