@@ -42,3 +42,5 @@ def test_dish():
         ValueError, match="Dish price must be greater then zero"
          ):  # formatação exigida pelo lint
         Dish("Ceviche", 0)
+
+# Erros resolvidos com ajuda da Ana em mentoria
