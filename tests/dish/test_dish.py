@@ -6,6 +6,11 @@ def test_dish():
     dish1 = Dish("Macarrão com camarão", 32.00)
     dish2 = Dish("Omelete de queijo", 18.00)
     ingredient1 = Ingredient("camarão")
+    ingredient_restriction1 = {
+            Restriction.ANIMAL_MEAT,
+            Restriction.SEAFOOD,
+            Restriction.ANIMAL_DERIVED,
+        }
     dish1.add_ingredient_dependency(ingredient1, 100)
 
     assert dish1.name == "Macarrão com camarão"
@@ -24,3 +29,4 @@ def test_dish():
     assert dish1.recipe == {
         ingredient1: 100
     }
+    assert dish1.get_restrictions == ingredient_restriction1
