@@ -6,7 +6,7 @@ from src.models.dish import Dish  # noqa: F401, E261, E501
 def test_dish():
     dish1 = Dish("Macarrão com camarão", 32.00)
     dish2 = Dish("Omelete de queijo", 18.00)
-    dish3 = Dish("Ceviche", 0)
+    dish3 = Dish("Ceviche", -50)
     ingredient1 = Ingredient("camarão")
     ingredient_restriction1 = {
             Restriction.ANIMAL_MEAT,
