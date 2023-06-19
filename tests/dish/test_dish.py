@@ -6,3 +6,6 @@ def test_dish():
 
     assert dish1.name == "Macarrão com camarão"
     assert dish1.price == 32.00
+
+    assert repr(dish1) == "Dish('Macarrão com camarão', R$32.00)"
+    # return f"Dish('{self.name}', R${self.price:.2f})"
