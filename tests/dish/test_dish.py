@@ -1,10 +1,12 @@
 from models.ingredient import Ingredient, Restriction
+import pytest
 from src.models.dish import Dish  # noqa: F401, E261, E501
 
 
 def test_dish():
     dish1 = Dish("Macarrão com camarão", 32.00)
     dish2 = Dish("Omelete de queijo", 18.00)
+    dish3 = Dish("Ceviche", 0)
     ingredient1 = Ingredient("camarão")
     ingredient_restriction1 = {
             Restriction.ANIMAL_MEAT,
@@ -25,6 +27,16 @@ def test_dish():
 
     assert hash(dish1) == "Dish('Macarrão com camarão', R$32.00)"
     # return hash(self.__repr__())
+
+    with pytest.raises(
+        TypeError, match="Dish price must be float."
+         ):  # formatação exigida pelo lint
+        dish3
+
+    with pytest.raises(
+        ValueError, match="Dish price must be greater then zero"
+         ):  # formatação exigida pelo lint
+        dish3
 
     assert dish1.recipe == {
         ingredient1: 100
