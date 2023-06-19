@@ -14,3 +14,6 @@ def test_dish():
     assert dish1 != dish2
     assert dish2 == Dish("Omelete de queijo", 18.00)
     # return self.__repr__() == other.__repr__()
+
+    assert hash(dish1) == "Dish('Macarrão com camarão', R$32.00)"
+    # return hash(self.__repr__())
