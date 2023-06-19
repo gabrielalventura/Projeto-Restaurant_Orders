@@ -10,3 +10,5 @@ def test_ingredient():
         }
     assert ingredient.name == "camarão"
     assert ingredient.restrictions == ingredient_restriction
+
+    assert repr(ingredient) == "Ingredient('camarão')"
